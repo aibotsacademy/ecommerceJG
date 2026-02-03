@@ -1,245 +1,231 @@
-// ===================================
-// LUXAESTHETICA - JavaScript
-// E-commerce functionality
-// ===================================
+// ============================================
+// Product Data
+// ============================================
 
-// === Product Data ===
-const productsData = [
+const products = [
+    {
+        id: 0,
+        name: "Orchid Antioxidant Face Oil",
+        category: "Skincare",
+        price: 125,
+        benefit: "Radiant glow & deep hydration",
+        description: "Luxurious botanical oil blend with rare orchid extract for luminous skin.",
+        rating: 4.8,
+        tags: ["Bestseller", "Doctor Curated"],
+        stock: 42,
+        imageSvg: createProductSVG(0)
+    },
     {
         id: 1,
-        name: "Barrier Recovery Serum",
+        name: "Bakuchiol Smoothing Serum",
         category: "Skincare",
-        price: 185,
-        description: "Advanced peptide complex with ceramide barrier support",
-        rating: 5,
-        tags: ["bestseller", "curated"],
-        stock: 24,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g1)"/><circle cx="100" cy="100" r="40" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/><circle cx="100" cy="100" r="20" fill="rgba(124,92,255,0.5)"/></svg>`
+        price: 98,
+        benefit: "Retinol alternative for sensitive skin",
+        description: "Plant-based alternative to retinol that smooths and refines texture.",
+        rating: 4.9,
+        tags: ["Bestseller", "New"],
+        stock: 38,
+        imageSvg: createProductSVG(1)
     },
     {
         id: 2,
-        name: "LED Precision Device",
-        category: "Devices",
-        price: 895,
-        description: "Clinical-grade LED therapy with calibrated wavelengths",
-        rating: 5,
-        tags: ["bestseller", "new"],
-        stock: 8,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g2)"/><rect x="60" y="60" width="80" height="80" rx="10" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/><circle cx="100" cy="80" r="5" fill="rgba(34,211,238,0.8)"/><circle cx="100" cy="100" r="5" fill="rgba(34,211,238,0.8)"/><circle cx="100" cy="120" r="5" fill="rgba(34,211,238,0.8)"/></svg>`
+        name: "Eye Anti-Aging Cream",
+        category: "Skincare",
+        price: 78,
+        benefit: "Reduces puffiness & dark circles",
+        description: "Green tea peptide complex targets signs of aging around delicate eye area.",
+        rating: 4.7,
+        tags: ["Bestseller", "Clinical Grade"],
+        stock: 55,
+        imageSvg: createProductSVG(2)
     },
     {
         id: 3,
-        name: "Retinal Complex",
+        name: "Hyaluronic Hydration Mist",
         category: "Skincare",
-        price: 165,
-        description: "Time-release retinal with antioxidant defense",
-        rating: 5,
-        tags: ["bestseller", "curated"],
-        stock: 18,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D0FE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#7C5CFF;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g3)"/><path d="M100 60 L120 90 L150 90 L130 110 L140 140 L100 120 L60 140 L70 110 L50 90 L80 90 Z" fill="none" stroke="rgba(245,208,254,0.6)" stroke-width="2"/></svg>`
+        price: 52,
+        benefit: "Instant moisture boost",
+        description: "Multi-molecular weight hyaluronic acid delivers hydration to all skin layers.",
+        rating: 4.6,
+        tags: ["New"],
+        stock: 67,
+        imageSvg: createProductSVG(3)
     },
     {
         id: 4,
-        name: "Hyaluronic Hydration",
-        category: "Skincare",
-        price: 145,
-        description: "Multi-weight HA with moisture retention technology",
-        rating: 4,
-        tags: ["curated"],
-        stock: 32,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#7C5CFF;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g4)"/><circle cx="100" cy="100" r="50" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><circle cx="100" cy="100" r="35" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="2"/><circle cx="100" cy="100" r="20" fill="rgba(34,211,238,0.3)"/></svg>`
+        name: "LED Light Therapy Mask",
+        category: "Devices",
+        price: 425,
+        benefit: "Professional-grade light therapy",
+        description: "Clinical LED device with multiple wavelengths for comprehensive skin rejuvenation.",
+        rating: 4.9,
+        tags: ["Bestseller", "Doctor Curated"],
+        stock: 15,
+        imageSvg: createProductSVG(4)
     },
     {
         id: 5,
-        name: "Microcurrent Sculpting Tool",
+        name: "Microcurrent Facial Toning Device",
         category: "Devices",
-        price: 675,
-        description: "Professional-grade facial contouring device",
-        rating: 5,
-        tags: ["new"],
-        stock: 12,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g5)"/><ellipse cx="100" cy="100" rx="40" ry="60" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/><line x1="80" y1="90" x2="120" y2="90" stroke="rgba(255,255,255,0.4)" stroke-width="2"/><line x1="80" y1="110" x2="120" y2="110" stroke="rgba(255,255,255,0.4)" stroke-width="2"/></svg>`
+        price: 385,
+        benefit: "Lifts & sculpts facial contours",
+        description: "FDA-cleared microcurrent technology for non-invasive facial toning.",
+        rating: 4.8,
+        tags: ["Clinical Grade"],
+        stock: 22,
+        imageSvg: createProductSVG(5)
     },
     {
         id: 6,
-        name: "Recovery Mask Set",
+        name: "Recovery Overnight Balm",
         category: "Recovery",
-        price: 225,
-        description: "Post-treatment biocellulose masks with growth factors",
-        rating: 5,
-        tags: ["new"],
-        stock: 15,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g6)"/><rect x="50" y="60" width="100" height="80" rx="40" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><circle cx="80" cy="90" r="8" fill="rgba(245,208,254,0.5)"/><circle cx="120" cy="90" r="8" fill="rgba(245,208,254,0.5)"/></svg>`
+        price: 88,
+        benefit: "Intensive barrier repair",
+        description: "Rich balm with ceramides and fatty acids restores skin overnight.",
+        rating: 4.7,
+        tags: ["Bestseller"],
+        stock: 44,
+        imageSvg: createProductSVG(6)
     },
     {
         id: 7,
-        name: "Vitamin C Brightening",
-        category: "Skincare",
-        price: 155,
-        description: "Stabilized L-ascorbic acid with ferulic acid",
-        rating: 5,
-        tags: [],
-        stock: 28,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D0FE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g7)"/><polygon points="100,50 130,80 130,130 100,150 70,130 70,80" fill="none" stroke="rgba(245,208,254,0.5)" stroke-width="2"/><circle cx="100" cy="100" r="15" fill="rgba(245,208,254,0.4)"/></svg>`
+        name: "Post-Procedure Soothing Gel",
+        category: "Recovery",
+        price: 72,
+        benefit: "Calms treated skin",
+        description: "Cooling gel formulated for post-treatment recovery and redness reduction.",
+        rating: 4.8,
+        tags: ["Doctor Curated"],
+        stock: 51,
+        imageSvg: createProductSVG(7)
     },
     {
         id: 8,
-        name: "Complete Restoration Bundle",
+        name: "Complete Skincare Essentials",
         category: "Bundles",
-        price: 485,
-        description: "Comprehensive treatment system with clinical protocols",
-        rating: 5,
-        tags: [],
-        stock: 10,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g8)"/><rect x="60" y="60" width="80" height="80" rx="8" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/><rect x="70" y="70" width="20" height="30" fill="rgba(124,92,255,0.3)"/><rect x="90" y="70" width="20" height="30" fill="rgba(34,211,238,0.3)"/><rect x="110" y="70" width="20" height="30" fill="rgba(245,208,254,0.3)"/></svg>`
+        price: 245,
+        benefit: "Full routine in one set",
+        description: "Curated collection of our hero products for a complete skincare regimen.",
+        rating: 4.9,
+        tags: ["Bestseller", "Limited"],
+        stock: 28,
+        imageSvg: createProductSVG(8)
     },
     {
         id: 9,
-        name: "Elite Membership Annual",
-        category: "Membership",
-        price: 2400,
-        description: "Unlimited treatments, priority booking, exclusive products",
-        rating: 5,
-        tags: [],
-        stock: 999,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.4"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.4"/></linearGradient></defs><rect width="200" height="200" fill="url(#g9)"/><path d="M100 50 L110 80 L140 85 L115 105 L122 135 L100 120 L78 135 L85 105 L60 85 L90 80 Z" fill="rgba(124,92,255,0.6)"/></svg>`
+        name: "Advanced Anti-Aging System",
+        category: "Bundles",
+        price: 385,
+        benefit: "Comprehensive age-defying routine",
+        description: "Professional-strength products targeting multiple signs of aging.",
+        rating: 4.8,
+        tags: ["Doctor Curated"],
+        stock: 19,
+        imageSvg: createProductSVG(9)
     },
     {
         id: 10,
-        name: "Niacinamide Treatment",
-        category: "Skincare",
-        price: 135,
-        description: "High-potency niacinamide with zinc for clarity",
-        rating: 4,
-        tags: [],
-        stock: 40,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g10" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#7C5CFF;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g10)"/><circle cx="100" cy="70" r="15" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><circle cx="80" cy="110" r="15" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><circle cx="120" cy="110" r="15" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/></svg>`
+        name: "Monthly Beauty Membership",
+        category: "Membership",
+        price: 95,
+        benefit: "Exclusive access & savings",
+        description: "Monthly delivery of curated products with 20% off all purchases.",
+        rating: 4.9,
+        tags: ["New"],
+        stock: 999,
+        imageSvg: createProductSVG(10)
     },
     {
         id: 11,
-        name: "Cooling Cryo Tool",
-        category: "Devices",
-        price: 445,
-        description: "Thermal therapy device for inflammation reduction",
-        rating: 4,
-        tags: ["new"],
-        stock: 14,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g11" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.4"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g11)"/><path d="M100 50 L110 70 L130 75 L115 90 L118 110 L100 100 L82 110 L85 90 L70 75 L90 70 Z" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="2"/><circle cx="100" cy="130" r="20" fill="rgba(34,211,238,0.2)"/></svg>`
+        name: "Vitamin C Brightening Complex",
+        category: "Skincare",
+        price: 92,
+        benefit: "Evens tone & boosts radiance",
+        description: "Stabilized vitamin C with ferulic acid for maximum brightening efficacy.",
+        rating: 4.7,
+        tags: ["Clinical Grade"],
+        stock: 48,
+        imageSvg: createProductSVG(11)
     },
     {
         id: 12,
-        name: "Post-Laser Recovery Cream",
-        category: "Recovery",
-        price: 195,
-        description: "Medical-grade healing complex with barrier repair",
-        rating: 5,
+        name: "Cleansing Balm",
+        category: "Skincare",
+        price: 48,
+        benefit: "Gentle makeup removal",
+        description: "Luxurious sherbet texture melts away impurities without stripping skin.",
+        rating: 4.6,
         tags: [],
-        stock: 22,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g12" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D0FE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#7C5CFF;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g12)"/><rect x="70" y="70" width="60" height="60" rx="30" fill="none" stroke="rgba(245,208,254,0.5)" stroke-width="2"/><path d="M100 80 L100 120 M80 100 L120 100" stroke="rgba(245,208,254,0.6)" stroke-width="2"/></svg>`
+        stock: 73,
+        imageSvg: createProductSVG(12)
     },
     {
         id: 13,
-        name: "Peptide Eye Treatment",
-        category: "Skincare",
-        price: 175,
-        description: "Advanced peptide blend for periorbital rejuvenation",
-        rating: 5,
+        name: "Cryotherapy Ice Roller",
+        category: "Devices",
+        price: 65,
+        benefit: "Reduces inflammation & puffiness",
+        description: "Professional-grade ice roller for depuffing and soothing sensitive skin.",
+        rating: 4.5,
         tags: [],
-        stock: 26,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g13" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g13)"/><ellipse cx="80" cy="100" rx="25" ry="15" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/><ellipse cx="120" cy="100" rx="25" ry="15" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/></svg>`
+        stock: 84,
+        imageSvg: createProductSVG(13)
     },
     {
         id: 14,
-        name: "RF Skin Tightening Device",
-        category: "Devices",
-        price: 1295,
-        description: "Radio-frequency technology for collagen stimulation",
-        rating: 5,
-        tags: [],
-        stock: 6,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g14" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D0FE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g14)"/><circle cx="100" cy="100" r="45" fill="none" stroke="rgba(245,208,254,0.5)" stroke-width="2"/><path d="M85 100 Q100 80 115 100 Q100 120 85 100" fill="rgba(34,211,238,0.3)"/></svg>`
+        name: "Barrier Defense Moisturizer",
+        category: "Recovery",
+        price: 82,
+        benefit: "Strengthens skin barrier",
+        description: "Advanced lipid complex repairs and protects compromised skin barrier.",
+        rating: 4.8,
+        tags: ["New"],
+        stock: 39,
+        imageSvg: createProductSVG(14)
     },
     {
         id: 15,
-        name: "Acne Treatment Bundle",
+        name: "Glow Essentials Starter Set",
         category: "Bundles",
-        price: 365,
-        description: "Complete acne management system with clinical actives",
-        rating: 4,
+        price: 165,
+        benefit: "Perfect introduction to the line",
+        description: "Travel-friendly sizes of our most-loved products for glowing skin.",
+        rating: 4.7,
         tags: [],
-        stock: 18,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g15" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22D3EE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#7C5CFF;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g15)"/><circle cx="85" cy="85" r="12" fill="rgba(34,211,238,0.4)"/><circle cx="115" cy="85" r="12" fill="rgba(124,92,255,0.4)"/><circle cx="100" cy="115" r="12" fill="rgba(245,208,254,0.4)"/></svg>`
-    },
-    {
-        id: 16,
-        name: "Premium Membership Monthly",
-        category: "Membership",
-        price: 225,
-        description: "Monthly treatments, product discounts, expert consultations",
-        rating: 5,
-        tags: [],
-        stock: 999,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g16" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g16)"/><rect x="60" y="70" width="80" height="60" rx="8" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/><text x="100" y="110" text-anchor="middle" fill="rgba(124,92,255,0.6)" font-size="24" font-weight="bold">P</text></svg>`
-    },
-    {
-        id: 17,
-        name: "Intensive Recovery Serum",
-        category: "Recovery",
-        price: 245,
-        description: "Post-procedure healing accelerator with growth factors",
-        rating: 5,
-        tags: ["new"],
-        stock: 16,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g17" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D0FE;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#22D3EE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g17)"/><path d="M100 60 L100 140 M70 100 L130 100" stroke="rgba(245,208,254,0.5)" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="35" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="2"/></svg>`
-    },
-    {
-        id: 18,
-        name: "Exfoliation Treatment Kit",
-        category: "Skincare",
-        price: 205,
-        description: "Medical-grade exfoliation system with barrier support",
-        rating: 4,
-        tags: [],
-        stock: 20,
-        imageSvg: `<svg width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g18" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#F5D0FE;stop-opacity:0.3"/></linearGradient></defs><rect width="200" height="200" fill="url(#g18)"/><rect x="65" y="65" width="70" height="70" rx="4" fill="none" stroke="rgba(124,92,255,0.5)" stroke-width="2"/><circle cx="80" cy="80" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="100" cy="80" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="120" cy="80" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="80" cy="100" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="100" cy="100" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="120" cy="100" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="80" cy="120" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="100" cy="120" r="3" fill="rgba(245,208,254,0.6)"/><circle cx="120" cy="120" r="3" fill="rgba(245,208,254,0.6)"/></svg>`
+        stock: 56,
+        imageSvg: createProductSVG(15)
     }
 ];
 
-// === State Management ===
-let cart = [];
+function createProductSVG(id) {
+    const colors = [
+        ['#F3D7C7', '#E8C4B0'],
+        ['#D7D2F6', '#C5BEE8'],
+        ['#D7E9E1', '#C2D9CE'],
+        ['#F0E7FF', '#E0D5F5'],
+        ['#FFE5E0', '#FFD5CE'],
+        ['#E5F2FF', '#D0E7FF']
+    ];
+    const colorPair = colors[id % colors.length];
+    
+    return `data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g${id}' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:${encodeURIComponent(colorPair[0])};stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:${encodeURIComponent(colorPair[1])};stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='200' height='200' fill='%23FFFDF9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='url(%23g${id})' opacity='0.8'/%3E%3Ccircle cx='100' cy='80' r='20' fill='rgba(255,255,255,0.9)'/%3E%3C/svg%3E`;
+}
+
+// ============================================
+// State Management
+// ============================================
+
+let cart = JSON.parse(localStorage.getItem('beautyCart')) || [];
 let currentFilter = 'all';
 let currentSort = 'featured';
-let currentCategory = 'Skincare';
-let sliderPosition = 0;
+let currentCategoryTab = 'Skincare';
 
-// === Initialize ===
-document.addEventListener('DOMContentLoaded', () => {
-    initializeCart();
-    renderTopPicks();
-    renderCuratedProducts();
-    renderNewArrivals();
-    renderCategorySlider();
-    renderProductsGrid();
-    setupEventListeners();
-    setupScrollReveal();
-    setupParallax();
-});
-
-// === Cart Functions ===
-function initializeCart() {
-    const savedCart = localStorage.getItem('luxaesthetica-cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartBadge();
-    }
-}
-
-function saveCart() {
-    localStorage.setItem('luxaesthetica-cart', JSON.stringify(cart));
-}
+// ============================================
+// Cart Functions
+// ============================================
 
 function addToCart(productId) {
-    const product = productsData.find(p => p.id === productId);
+    const product = products.find(p => p.id === productId);
     if (!product) return;
     
     const existingItem = cart.find(item => item.id === productId);
@@ -251,19 +237,17 @@ function addToCart(productId) {
     }
     
     saveCart();
-    updateCartBadge();
-    renderCartItems();
-    showToast(`${product.name} added to cart`);
+    updateCartUI();
+    showToast(`Added ${product.name} to cart`);
 }
 
 function removeFromCart(productId) {
-    const product = cart.find(item => item.id === productId);
+    const product = products.find(p => p.id === productId);
     cart = cart.filter(item => item.id !== productId);
     saveCart();
-    updateCartBadge();
-    renderCartItems();
+    updateCartUI();
     if (product) {
-        showToast(`${product.name} removed from cart`);
+        showToast(`Removed ${product.name} from cart`);
     }
 }
 
@@ -277,420 +261,495 @@ function updateQuantity(productId, change) {
         removeFromCart(productId);
     } else {
         saveCart();
-        renderCartItems();
+        updateCartUI();
     }
 }
 
-function updateCartBadge() {
-    const badge = document.getElementById('cartBadge');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    badge.textContent = totalItems;
+function saveCart() {
+    localStorage.setItem('beautyCart', JSON.stringify(cart));
 }
 
-function renderCartItems() {
-    const cartItemsContainer = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
+function updateCartUI() {
+    const cartBadge = document.querySelector('.cart-badge');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.querySelector('.cart-total-amount');
+    
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    cartBadge.textContent = totalItems;
+    cartBadge.dataset.count = totalItems;
     
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
-        cartTotal.textContent = '$0.00';
-        return;
-    }
-    
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    cartItemsContainer.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <div class="cart-item-image">${item.imageSvg}</div>
-            <div class="cart-item-info">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                <div class="cart-item-controls">
-                    <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)" aria-label="Decrease quantity">−</button>
-                    <span class="qty-display">${item.quantity}</span>
-                    <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)" aria-label="Increase quantity">+</button>
-                    <button class="btn-add" onclick="removeFromCart(${item.id})" style="margin-left: auto;">Remove</button>
+        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+    } else {
+        cartItems.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <img src="${item.imageSvg}" alt="${item.name}" class="cart-item__image">
+                <div class="cart-item__details">
+                    <div class="cart-item__name">${item.name}</div>
+                    <div class="cart-item__price">$${item.price}</div>
+                    <div class="cart-item__quantity">
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)" aria-label="Decrease quantity">−</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)" aria-label="Increase quantity">+</button>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})" aria-label="Remove item">×</button>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
+    }
     
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
 }
 
-// === Toast Notification ===
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastContent = document.getElementById('toastContent');
+function toggleCart() {
+    const cartDrawer = document.getElementById('cartDrawer');
+    const isHidden = cartDrawer.getAttribute('aria-hidden') === 'true';
+    cartDrawer.setAttribute('aria-hidden', !isHidden);
     
-    toastContent.textContent = message;
-    toast.classList.add('show');
+    if (!isHidden) {
+        document.body.style.overflow = '';
+    } else {
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// ============================================
+// Toast Notifications
+// ============================================
+
+function showToast(message) {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    
+    container.appendChild(toast);
     
     setTimeout(() => {
-        toast.classList.remove('show');
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
     }, 3000);
 }
 
-// === Render Functions ===
-function renderTopPicks() {
-    const container = document.getElementById('topPicksGrid');
-    const topProducts = productsData.filter(p => p.tags.includes('bestseller')).slice(0, 4);
-    
-    container.innerHTML = topProducts.map(product => createPremiumCard(product)).join('');
-}
+// ============================================
+// Scroll Reveal Animations
+// ============================================
 
-function renderCuratedProducts() {
-    const container = document.getElementById('curatedProducts');
-    const curatedProducts = productsData.filter(p => p.tags.includes('curated')).slice(0, 3);
-    
-    container.innerHTML = curatedProducts.map(product => `
-        <div class="curated-product-card">
-            <div class="curated-product-image">${product.imageSvg}</div>
-            <div class="curated-product-info">
-                <div class="curated-product-name">${product.name}</div>
-                <div class="curated-product-benefit">${product.description}</div>
-                <div class="curated-product-price">$${product.price.toFixed(2)}</div>
-                <button class="btn-add" onclick="addToCart(${product.id})">Add to Cart</button>
-            </div>
-        </div>
-    `).join('');
-}
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-function renderNewArrivals() {
-    const container = document.getElementById('newArrivalsTrack');
-    const newProducts = productsData.filter(p => p.tags.includes('new'));
-    
-    container.innerHTML = newProducts.map(product => `
-        <div class="carousel-card">
-            <div class="carousel-image">${product.imageSvg}</div>
-            <div class="carousel-name">${product.name}</div>
-            <div class="carousel-price">$${product.price.toFixed(2)}</div>
-            <span class="new-badge">New</span>
-            <button class="btn-add" onclick="addToCart(${product.id})" style="margin-top: 0.5rem; width: 100%;">Add to Cart</button>
-        </div>
-    `).join('');
-}
-
-function renderCategorySlider() {
-    updateSliderContent();
-    updatePaginationDots();
-}
-
-function updateSliderContent() {
-    const track = document.getElementById('sliderTrack');
-    const categoryProducts = productsData.filter(p => p.category === currentCategory);
-    
-    track.innerHTML = categoryProducts.map(product => createSliderCard(product)).join('');
-    sliderPosition = 0;
-    updateSliderPosition();
-}
-
-function renderProductsGrid() {
-    const container = document.getElementById('productsGrid');
-    let filtered = currentFilter === 'all' 
-        ? productsData 
-        : productsData.filter(p => p.category === currentFilter);
-    
-    // Sort products
-    filtered = sortProducts(filtered);
-    
-    container.innerHTML = filtered.map(product => createProductCard(product)).join('');
-}
-
-function sortProducts(products) {
-    const sorted = [...products];
-    
-    switch(currentSort) {
-        case 'price-asc':
-            return sorted.sort((a, b) => a.price - b.price);
-        case 'price-desc':
-            return sorted.sort((a, b) => b.price - a.price);
-        case 'rating':
-            return sorted.sort((a, b) => b.rating - a.rating);
-        case 'name':
-            return sorted.sort((a, b) => a.name.localeCompare(b.name));
-        default:
-            return sorted;
-    }
-}
-
-// === Card Templates ===
-function createPremiumCard(product) {
-    return `
-        <div class="premium-card">
-            <div class="card-image">${product.imageSvg}</div>
-            <div class="card-body">
-                <h3 class="card-name">${product.name}</h3>
-                <p class="card-description">${product.description}</p>
-                <div class="card-rating">${createStars(product.rating)}</div>
-                <div class="card-tags">
-                    ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <div class="card-meta">
-                    <span class="card-price">$${product.price.toFixed(2)}</span>
-                    <button class="btn-add" onclick="addToCart(${product.id})">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function createSliderCard(product) {
-    return `
-        <div class="slider-card">
-            <div class="card-image">${product.imageSvg}</div>
-            <div class="card-body">
-                <h3 class="card-name">${product.name}</h3>
-                <p class="card-description">${product.description}</p>
-                <div class="card-rating">${createStars(product.rating)}</div>
-                <div class="card-meta">
-                    <span class="card-price">$${product.price.toFixed(2)}</span>
-                    <button class="btn-add" onclick="addToCart(${product.id})">Add</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function createProductCard(product) {
-    return `
-        <div class="product-card">
-            <div class="card-image">${product.imageSvg}</div>
-            <div class="card-body">
-                <h3 class="card-name">${product.name}</h3>
-                <p class="card-description">${product.description}</p>
-                <div class="card-rating">${createStars(product.rating)}</div>
-                <div class="card-tags">
-                    ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <div class="card-meta">
-                    <span class="card-price">$${product.price.toFixed(2)}</span>
-                    <button class="btn-add" onclick="addToCart(${product.id})">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function createStars(rating) {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-        if (i < rating) {
-            stars.push('<span class="star">★</span>');
-        } else {
-            stars.push('<span class="star" style="opacity: 0.3;">★</span>');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            revealObserver.unobserve(entry.target);
         }
-    }
-    return stars.join('');
+    });
+}, observerOptions);
+
+function initScrollReveal() {
+    document.querySelectorAll('.feature-panel, .product-card').forEach(el => {
+        revealObserver.observe(el);
+    });
 }
 
-// === Event Listeners ===
-function setupEventListeners() {
-    // Cart drawer
-    const cartToggle = document.getElementById('cartToggle');
-    const cartClose = document.getElementById('cartClose');
-    const cartClose2 = document.getElementById('cartClose2');
-    const cartOverlay = document.getElementById('cartOverlay');
-    const cartDrawer = document.getElementById('cartDrawer');
+// ============================================
+// Bestsellers Carousel
+// ============================================
+
+function initBestsellersCarousel() {
+    const carousel = document.getElementById('bestsellersCarousel');
+    const progressBar = document.querySelector('.carousel-progress__bar');
+    const nextBtn = document.querySelector('.carousel-control--next');
     
-    cartToggle.addEventListener('click', () => {
-        cartDrawer.setAttribute('aria-hidden', 'false');
-        renderCartItems();
-    });
+    const bestsellers = products.filter(p => p.tags.includes('Bestseller'));
     
-    const closeCart = () => {
-        cartDrawer.setAttribute('aria-hidden', 'true');
+    carousel.innerHTML = bestsellers.map(product => `
+        <div class="carousel-card">
+            <img src="${product.imageSvg}" alt="${product.name}" class="carousel-card__image">
+            <div class="carousel-card__name">${product.name}</div>
+            <div class="carousel-card__benefit">${product.benefit}</div>
+            <div class="carousel-card__price">$${product.price}</div>
+            <button class="carousel-card__cta" onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+    `).join('');
+    
+    const updateProgress = () => {
+        const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+        const scrollLeft = carousel.scrollLeft;
+        const progress = (scrollLeft / scrollWidth) * 100;
+        progressBar.style.width = `${progress}%`;
     };
     
-    cartClose.addEventListener('click', closeCart);
-    cartClose2.addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
+    carousel.addEventListener('scroll', updateProgress);
     
-    // ESC key to close cart
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && cartDrawer.getAttribute('aria-hidden') === 'false') {
-            closeCart();
-        }
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: 350, behavior: 'smooth' });
     });
     
-    // Category tabs
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    categoryTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            categoryTabs.forEach(t => {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
-            currentCategory = tab.dataset.category;
-            updateSliderContent();
-        });
-    });
-    
-    // Slider navigation
-    const prevBtn = document.querySelector('.slider-nav--prev');
-    const nextBtn = document.querySelector('.slider-nav--next');
-    
-    prevBtn.addEventListener('click', () => moveSlider(-1));
-    nextBtn.addEventListener('click', () => moveSlider(1));
-    
-    // Keyboard navigation for slider
-    const sliderViewport = document.getElementById('categorySlider');
-    sliderViewport.addEventListener('keydown', (e) => {
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
-            moveSlider(-1);
+            carousel.scrollBy({ left: -350, behavior: 'smooth' });
         } else if (e.key === 'ArrowRight') {
-            moveSlider(1);
+            carousel.scrollBy({ left: 350, behavior: 'smooth' });
         }
     });
+}
+
+// ============================================
+// Product Grid with Filters
+// ============================================
+
+function renderProductGrid() {
+    const grid = document.getElementById('productGrid');
+    let filteredProducts = products;
     
-    // Filter pills
+    // Apply filter
+    if (currentFilter !== 'all') {
+        filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
+    }
+    
+    // Apply sort
+    switch (currentSort) {
+        case 'price-low':
+            filteredProducts.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-high':
+            filteredProducts.sort((a, b) => b.price - a.price);
+            break;
+        case 'rating':
+            filteredProducts.sort((a, b) => b.rating - a.rating);
+            break;
+        default:
+            // Featured - keep original order
+            break;
+    }
+    
+    grid.innerHTML = filteredProducts.map(product => `
+        <div class="product-card">
+            <img src="${product.imageSvg}" alt="${product.name}" class="product-card__image">
+            <div class="product-card__tags">
+                ${product.tags.map(tag => `<span class="product-tag">${tag}</span>`).join('')}
+            </div>
+            <div class="product-card__name">${product.name}</div>
+            <div class="product-card__benefit">${product.benefit}</div>
+            <div class="product-card__footer">
+                <div class="product-card__price">$${product.price}</div>
+                <button class="product-card__add" onclick="addToCart(${product.id})">Add</button>
+            </div>
+        </div>
+    `).join('');
+    
+    // Re-observe for scroll reveal
+    setTimeout(() => {
+        document.querySelectorAll('.product-card').forEach(el => {
+            revealObserver.observe(el);
+        });
+    }, 100);
+}
+
+function initProductFilters() {
     const filterPills = document.querySelectorAll('.filter-pill');
+    const sortSelect = document.getElementById('sortSelect');
+    
     filterPills.forEach(pill => {
         pill.addEventListener('click', () => {
             filterPills.forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
-            currentFilter = pill.dataset.filter;
-            renderProductsGrid();
-            // Re-setup scroll reveal for new cards
-            setTimeout(setupScrollReveal, 100);
+            currentFilter = pill.dataset.category;
+            renderProductGrid();
         });
     });
     
-    // Sort dropdown
-    const sortSelect = document.getElementById('sortSelect');
     sortSelect.addEventListener('change', (e) => {
         currentSort = e.target.value;
-        renderProductsGrid();
-        // Re-setup scroll reveal for new cards
-        setTimeout(setupScrollReveal, 100);
-    });
-    
-    // Newsletter form
-    const newsletterForm = document.getElementById('newsletterForm');
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const input = newsletterForm.querySelector('.newsletter-input');
-        if (input.value) {
-            showToast('Successfully subscribed to newsletter!');
-            input.value = '';
-        }
+        renderProductGrid();
     });
 }
 
-// === Slider Functions ===
-function moveSlider(direction) {
-    const track = document.getElementById('sliderTrack');
-    const cards = track.querySelectorAll('.slider-card');
-    const maxPosition = Math.max(0, cards.length - getVisibleCards());
-    
-    sliderPosition = Math.max(0, Math.min(maxPosition, sliderPosition + direction));
-    updateSliderPosition();
-    updatePaginationDots();
-}
+// ============================================
+// Floating Product Cards (Lifestyle Section)
+// ============================================
 
-function getVisibleCards() {
-    const viewportWidth = window.innerWidth;
-    if (viewportWidth >= 1200) return 4;
-    if (viewportWidth >= 900) return 3;
-    if (viewportWidth >= 600) return 2;
-    return 1;
-}
-
-function updateSliderPosition() {
-    const track = document.getElementById('sliderTrack');
-    const cardWidth = 300;
-    const gap = 24;
-    const offset = -(sliderPosition * (cardWidth + gap));
-    track.style.transform = `translateX(${offset}px)`;
-}
-
-function updatePaginationDots() {
-    const pagination = document.getElementById('sliderPagination');
-    const track = document.getElementById('sliderTrack');
-    const cards = track.querySelectorAll('.slider-card');
-    const visibleCards = getVisibleCards();
-    const totalDots = Math.max(1, Math.ceil(cards.length / visibleCards));
+function initFloatingCards() {
+    const container = document.getElementById('floatingCards');
+    const floatingProducts = products.slice(0, 3);
     
-    pagination.innerHTML = Array.from({ length: totalDots }, (_, i) => {
-        const isActive = Math.floor(sliderPosition / visibleCards) === i;
-        return `<button class="pagination-dot ${isActive ? 'active' : ''}" 
-                        onclick="jumpToSlide(${i})"
-                        aria-label="Go to slide ${i + 1}"></button>`;
-    }).join('');
-}
-
-function jumpToSlide(index) {
-    const visibleCards = getVisibleCards();
-    sliderPosition = index * visibleCards;
-    updateSliderPosition();
-    updatePaginationDots();
-}
-
-// === Scroll Reveal Animation ===
-function setupScrollReveal() {
-    const productCards = document.querySelectorAll('.product-card');
+    container.innerHTML = floatingProducts.map(product => `
+        <div class="floating-card" data-product-id="${product.id}">
+            <img src="${product.imageSvg}" alt="${product.name}" class="floating-card__image">
+            <div class="floating-card__name">${product.name}</div>
+            <div class="floating-card__price">$${product.price}</div>
+            <button class="floating-card__cta" onclick="addToCart(${product.id})">Quick Add</button>
+        </div>
+    `).join('');
     
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('revealed');
-                }, index * 50);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    productCards.forEach(card => {
-        observer.observe(card);
-    });
-}
-
-// === Parallax Effect ===
-function setupParallax() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-    
-    const isTouchDevice = 'ontouchstart' in window;
-    if (isTouchDevice) return;
-    
-    const parallaxElements = document.querySelectorAll('[data-parallax="true"]');
-    
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
+    // Mouse parallax effect (disabled on touch devices and reduced motion)
+    if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+        const cards = container.querySelectorAll('.floating-card');
         
-        parallaxElements.forEach((el, index) => {
-            const speed = 0.3 + (index * 0.1);
-            const yPos = -(scrolled * speed);
-            el.style.transform = `translateY(${yPos}px)`;
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            cards.forEach((card, index) => {
+                const intensity = (index + 1) * 5;
+                card.style.transform = `translate(${x * intensity}px, ${y * intensity}px)`;
+            });
         });
         
-        ticking = false;
+        container.addEventListener('mouseleave', () => {
+            cards.forEach(card => {
+                card.style.transform = '';
+            });
+        });
+    }
+}
+
+// ============================================
+// Category Slider with Tabs
+// ============================================
+
+function initCategorySlider() {
+    const segments = document.querySelectorAll('.segment');
+    const carousel = document.getElementById('categoryCarousel');
+    const prevBtn = document.querySelector('.category-nav--prev');
+    const nextBtn = document.querySelector('.category-nav--next');
+    const dotsContainer = document.getElementById('paginationDots');
+    
+    let currentSlideIndex = 0;
+    
+    function renderCategorySlides(category) {
+        const categoryProducts = products.filter(p => p.category === category);
+        
+        carousel.innerHTML = categoryProducts.map((product, index) => `
+            <div class="category-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+                <img src="${product.imageSvg}" alt="${product.name}" class="category-slide__image">
+                <div class="category-slide__content">
+                    <div class="category-slide__title">${product.name}</div>
+                    <div class="category-slide__description">${product.description}</div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Create pagination dots
+        dotsContainer.innerHTML = categoryProducts.map((_, index) => 
+            `<button class="pagination-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>`
+        ).join('');
+        
+        currentSlideIndex = 0;
+        updateActiveSlide();
     }
     
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
+    function updateActiveSlide() {
+        const slides = carousel.querySelectorAll('.category-slide');
+        const dots = dotsContainer.querySelectorAll('.pagination-dot');
+        
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlideIndex);
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlideIndex);
+        });
+        
+        const slideWidth = slides[0]?.offsetWidth + 24 || 304;
+        carousel.scrollTo({
+            left: currentSlideIndex * slideWidth,
+            behavior: 'smooth'
+        });
+    }
+    
+    segments.forEach(segment => {
+        segment.addEventListener('click', () => {
+            segments.forEach(s => s.setAttribute('aria-selected', 'false'));
+            segment.setAttribute('aria-selected', 'true');
+            currentCategoryTab = segment.dataset.category;
+            renderCategorySlides(currentCategoryTab);
+        });
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        const slides = carousel.querySelectorAll('.category-slide');
+        currentSlideIndex = Math.max(0, currentSlideIndex - 1);
+        updateActiveSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const slides = carousel.querySelectorAll('.category-slide');
+        currentSlideIndex = Math.min(slides.length - 1, currentSlideIndex + 1);
+        updateActiveSlide();
+    });
+    
+    // Dot navigation
+    dotsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('pagination-dot')) {
+            currentSlideIndex = parseInt(e.target.dataset.index);
+            updateActiveSlide();
         }
+    });
+    
+    // Initialize with first category
+    renderCategorySlides(currentCategoryTab);
+}
+
+// ============================================
+// Face Hotspots
+// ============================================
+
+function initFaceHotspots() {
+    const hotspots = document.querySelectorAll('.hotspot');
+    const infos = document.querySelectorAll('.hotspot-info');
+    
+    hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', () => {
+            const target = hotspot.dataset.hotspot;
+            const infoCard = document.getElementById(`hotspot${target.charAt(0).toUpperCase() + target.slice(1)}`);
+            
+            // Close all other hotspots
+            hotspots.forEach(h => h.classList.remove('active'));
+            infos.forEach(info => info.setAttribute('hidden', ''));
+            
+            // Toggle current
+            const isActive = !infoCard.hasAttribute('hidden');
+            
+            if (isActive) {
+                hotspot.classList.remove('active');
+                infoCard.setAttribute('hidden', '');
+            } else {
+                hotspot.classList.add('active');
+                infoCard.removeAttribute('hidden');
+            }
+        });
+    });
+    
+    // Close buttons
+    document.querySelectorAll('.hotspot-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+            hotspots.forEach(h => h.classList.remove('active'));
+            infos.forEach(info => info.setAttribute('hidden', ''));
+        });
     });
 }
 
-// === Window Resize Handler ===
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        updateSliderPosition();
-        updatePaginationDots();
-    }, 250);
+// ============================================
+// Newsletter Form
+// ============================================
+
+function initNewsletterForm() {
+    const form = document.getElementById('newsletterForm');
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input').value;
+        
+        showToast('Thank you for subscribing!');
+        form.reset();
+    });
+}
+
+// ============================================
+// Header Scroll Behavior
+// ============================================
+
+function initHeaderScroll() {
+    const header = document.getElementById('mainHeader');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.65)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
+
+// ============================================
+// Event Listeners
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all components
+    updateCartUI();
+    initScrollReveal();
+    initBestsellersCarousel();
+    renderProductGrid();
+    initProductFilters();
+    initFloatingCards();
+    initCategorySlider();
+    initFaceHotspots();
+    initNewsletterForm();
+    initHeaderScroll();
+    
+    // Cart trigger
+    document.querySelector('.cart-trigger').addEventListener('click', toggleCart);
+    document.querySelector('.cart-close').addEventListener('click', toggleCart);
+    document.querySelector('.cart-overlay').addEventListener('click', toggleCart);
+
+    // Cart checkout → navigate to shopping-cart.html
+    document.querySelector('.cart-checkout').addEventListener('click', () => {
+        if (cart.length === 0) {
+            showToast('Your cart is empty');
+            return;
+        }
+        window.location.href = 'shopping-cart.html';
+    });
+    
+    // ESC to close cart
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const cartDrawer = document.getElementById('cartDrawer');
+            if (cartDrawer.getAttribute('aria-hidden') === 'false') {
+                toggleCart();
+            }
+        }
+    });
+    
+    // Feature panel CTAs
+    document.querySelectorAll('.feature-panel__cta').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const productId = parseInt(btn.dataset.productId);
+            addToCart(productId);
+        });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // Video error handling
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('error', () => {
+            console.log('Video failed to load, using fallback');
+        });
+    });
 });
+
+// ============================================
+// Expose functions to global scope for inline handlers
+// ============================================
+
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateQuantity = updateQuantity;
+
